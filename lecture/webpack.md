@@ -18,3 +18,5 @@ npm install webpack webpack-cli react react-dom
 # 실행
 
 npx webpack
+
+기존에는 react관련 코드를 받아서 했지만 웹팩을 통해서 사용할 수 있게 된다.
