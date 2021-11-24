@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import Style from "./App.module.scss";
-import cn from "classnames";
 
 export default function App() {
   const [todoList, setTodoList] = useState([]);
   const [currentId, setCurrentId] = useState(1);
   const [desc, setDesc] = useState("");
-  const isTrue = false;
 
   function onAdd() {
     const todo = { id: currentId, desc };
@@ -27,22 +24,20 @@ export default function App() {
       <h3>할 일 목록</h3>
       <ul>
         {todoList.map((todo) => {
-          return (
-            <li>
-              <span>{todo.desc}</span>
-              <button data-id={todo.id} onClick={onDelete}>
-                삭제
-              </button>
-            </li>
-          );
+          <li>
+            <span>{todo.desc}</span>
+            <button data-id={todo.id} onClick={onDelete}>
+              삭제
+            </button>
+          </li>;
         })}
       </ul>
 
       <input
-        className={cn({ [Style.red]: isTrue, [Style.blue]: !isTrue })}
         type="text"
         value={desc}
         onChange={(e) => {
+          console.log(e.target.value);
           setDesc(e.target.value);
         }}
       />
