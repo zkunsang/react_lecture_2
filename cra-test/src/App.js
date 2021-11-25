@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import Counter from "./Counter";
+import React, { useState, useEffect } from "react";
+import WithPrinter from "./WithPrinter";
 
 export default function App() {
-  const [color, setColor] = useState("red");
+  const [count, setCount] = useState(0);
 
   function onClick() {
-    setColor(color === "blue" ? "red" : "blue");
+    setCount((v) => v + 1);
   }
 
   return (
-    <>
-      <button style={{ backgroundColor: color }} onClick={onClick}>
-        좋아요
-      </button>
-      <Counter />
-    </>
+    <div>
+      <WithPrinter />
+      {/* <Profile userId={userId} /> */}
+      <h2>{count}</h2>
+      <button onClick={onClick}>증가</button>
+    </div>
   );
 }
