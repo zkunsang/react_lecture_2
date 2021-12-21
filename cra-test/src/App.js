@@ -1,36 +1,20 @@
-import React, { createContext, useState, useContext } from "react";
-
-const UserContext = createContext("unknown");
+import React from "react";
+import useChangeAppState, { STATE_START, STATE_RUNNING } from "./useChangeApp";
 
 export default function App() {
-  const [name, setName] = useState("mike");
+  const [state, next] = useChangeAppState(true);
+
+  const msg =
+    state === STATE_START
+      ? "앱 시작"
+      : state === STATE_RUNNING
+      ? "앱 시작"
+      : "앱 종료";
+
   return (
     <div>
-      <UserContext.Provider value={name}>
-        <div>상단메뉴</div>
-        <Profile></Profile>
-        <div>하단 메뉴</div>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        ></input>
-      </UserContext.Provider>
+      <p>{msg}</p>
+      <button onClick={next}>next</button>
     </div>
   );
-}
-
-const Profile = React.memo(function () {
-  console.log("Profile render");
-  return (
-    <div>
-      <Greeting />
-      {/* {} */}
-    </div>
-  );
-});
-
-function Greeting() {
-  const username = useContext(UserContext);
-  return <p>{`${username}님 안녕하세요`}</p>;
 }

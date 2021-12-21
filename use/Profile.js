@@ -1,13 +1,11 @@
-import React, { forwardRef, useState, useImperativeHandle } from "react";
+import React, { forwardRef, useState, useImperativeHadle } from "react";
 
 function Profile(_, ref) {
-  const [name, setName] = useState("mike");
+  const [name, setName] = useSate("mike");
   const [age, setAge] = useState(0);
 
-  const addAge = (value) => setAge(age + value);
-
-  useImperativeHandle(ref, () => ({
-    addAge: addAge,
+  useImperativeHadle(ref, () => ({
+    addAge: (value) => setAge(age + value),
     getNameLength: () => name.length,
   }));
 
