@@ -1,20 +1,15 @@
-import React from "react";
-import useChangeAppState, { STATE_START, STATE_RUNNING } from "./useChangeApp";
+import React, { useState } from "react";
+
+import { getNextFriend } from "./data";
+import FriendPage from "./container/FriendPage";
 
 export default function App() {
-  const [state, next] = useChangeAppState(true);
-
-  const msg =
-    state === STATE_START
-      ? "앱 시작"
-      : state === STATE_RUNNING
-      ? "앱 시작"
-      : "앱 종료";
-
   return (
     <div>
-      <p>{msg}</p>
-      <button onClick={next}>next</button>
+      <FriendPage />
     </div>
   );
 }
+
+const MAX_AGE_LIMIT = 100;
+const AGE_LIMIT_OPTIONS = [15, 20, 25, MAX_AGE_LIMIT];
