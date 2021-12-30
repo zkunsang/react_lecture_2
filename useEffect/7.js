@@ -10,3 +10,5 @@ function Profile({ userId }) {
     fetchAndSetUser(false);
   }, [userId]);
 }
+
+
